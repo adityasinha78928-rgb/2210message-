@@ -43,7 +43,7 @@ button {
   padding: 14px 28px;
   font-size: 17px;
   cursor: pointer;
-  background: #fff;
+  background: white;
   color: #d6336c;
   box-shadow: 0 5px 15px #0002;
   transition: transform .2s;
@@ -66,7 +66,7 @@ button:hover {
 }
 
 .message {
-  background: #ffffffb8;
+  background: #ffffffd9;
   padding: 25px;
   border-radius: 25px;
   margin-top: 25px;
@@ -81,6 +81,8 @@ button:hover {
   font-size: 18px;
   line-height: 1.7;
 }
+
+/* Panda and Teddy Bear */
 
 .characters {
   display: flex;
@@ -99,6 +101,48 @@ button:hover {
   animation-delay: .3s;
 }
 
+/* Music Player */
+
+.music-player {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: #ffffffee;
+  padding: 15px 20px;
+  border-radius: 20px;
+  margin: 25px auto;
+  max-width: 420px;
+  box-shadow: 0 5px 20px #0002;
+}
+
+.music-icon {
+  font-size: 35px;
+}
+
+.music-info {
+  flex: 1;
+  text-align: left;
+}
+
+.music-info strong {
+  display: block;
+  font-size: 16px;
+}
+
+.music-info small {
+  display: block;
+  margin-top: 5px;
+  color: #a33b65;
+}
+
+.music-player button {
+  padding: 12px;
+  font-size: 20px;
+  border-radius: 50%;
+}
+
+/* Photo Gallery */
+
 .gallery {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -114,6 +158,8 @@ button:hover {
   border: 4px solid white;
 }
 
+/* Fireworks */
+
 #fireworks {
   position: fixed;
   inset: 0;
@@ -125,6 +171,8 @@ button:hover {
   position: relative;
   z-index: 2;
 }
+
+/* Animations */
 
 @keyframes bounce {
   50% {
@@ -198,10 +246,34 @@ button:hover {
 
     <div id="giftContent" class="hidden">
 
-      <div class="characters">
-        <div class="character">🐼</div>
-        <div class="character">🧸</div>
+      <!-- Music Player -->
+
+      <div id="musicPlayer" class="music-player hidden">
+
+        <div class="music-icon">🎵</div>
+
+        <div class="music-info">
+          <strong>Our Special Song ❤️</strong>
+          <small>Tum Jo Aaye Zindagi Mein</small>
+        </div>
+
+        <button id="playBtn" onclick="toggleMusic()">
+          ▶️
+        </button>
+
       </div>
+
+      <!-- Panda and Teddy Bear -->
+
+      <div class="characters">
+
+        <div class="character">🐼</div>
+
+        <div class="character">🧸</div>
+
+      </div>
+
+      <!-- Birthday Message -->
 
       <div class="message">
 
@@ -248,13 +320,20 @@ button:hover {
 
       </div>
 
+      <!-- Photo Gallery -->
+
       <h2>Our Beautiful Memories 📸</h2>
 
       <div class="gallery">
+
         <img src="photo1.jpg" alt="Our memory">
+
         <img src="photo2.jpg" alt="Our memory">
+
         <img src="photo3.jpg" alt="Our memory">
+
         <img src="photo4.jpg" alt="Our memory">
+
       </div>
 
     </div>
@@ -263,11 +342,14 @@ button:hover {
 
 </div>
 
+<!-- Audio File -->
+
 <audio id="music" loop>
   <source src="birthday-song.mp3" type="audio/mpeg">
 </audio>
 
 <script>
+
 const canvas = document.getElementById("fireworks");
 const ctx = canvas.getContext("2d");
 
@@ -281,61 +363,119 @@ window.addEventListener("resize", () => {
   canvas.height = innerHeight;
 });
 
+/* First Button */
+
 function startSurprise() {
-  document.getElementById("surprise").classList.remove("hidden");
 
-  const music = document.getElementById("music");
-
-  music.play().catch(() => {});
+  document.getElementById("surprise")
+    .classList.remove("hidden");
 
   fireworks();
+
 }
 
+/* Gift Opening */
+
 function openGift() {
+
   document.querySelector(".gift").textContent = "🎉";
 
   document.getElementById("giftContent")
     .classList.remove("hidden");
 
+  document.getElementById("musicPlayer")
+    .classList.remove("hidden");
+
   fireworks();
+
 }
 
-function fireworks() {
-  for (let i = 0; i < 100; i++) {
-    particles.push({
-      x: innerWidth / 2,
-      y: innerHeight / 2,
-      angle: Math.random() * Math.PI * 2,
-      speed: Math.random() * 7 + 2,
-      life: 100
-    });
+/* Music Play and Pause */
+
+function toggleMusic() {
+
+  const music = document.getElementById("music");
+  const playBtn = document.getElementById("playBtn");
+
+  if (music.paused) {
+
+    music.play()
+      .then(() => {
+        playBtn.textContent = "⏸️";
+      })
+      .catch(() => {
+        alert("Song play nahi ho pa raha. Audio file check karo.");
+      });
+
+  } else {
+
+    music.pause();
+
+    playBtn.textContent = "▶️";
+
   }
+
+}
+
+/* Fireworks */
+
+function fireworks() {
+
+  for (let i = 0; i < 100; i++) {
+
+    particles.push({
+
+      x: innerWidth / 2,
+
+      y: innerHeight / 2,
+
+      angle: Math.random() * Math.PI * 2,
+
+      speed: Math.random() * 7 + 2,
+
+      life: 100
+
+    });
+
+  }
+
 }
 
 function animate() {
+
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   particles.forEach((p, index) => {
+
     p.x += Math.cos(p.angle) * p.speed;
+
     p.y += Math.sin(p.angle) * p.speed;
+
     p.life--;
 
     ctx.fillStyle =
       `hsl(${Math.random() * 360}, 100%, 60%)`;
 
     ctx.beginPath();
+
     ctx.arc(p.x, p.y, 3, 0, Math.PI * 2);
+
     ctx.fill();
 
     if (p.life <= 0) {
+
       particles.splice(index, 1);
+
     }
+
   });
 
   requestAnimationFrame(animate);
+
 }
 
 animate();
+
 </script>
 
 </body>
