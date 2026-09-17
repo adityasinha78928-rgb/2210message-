@@ -144,18 +144,68 @@ button:hover {
 /* Photo Gallery */
 
 .gallery {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
+  display: none;
+}
+
+.photo-folder {
+  width: 180px;
+  height: 135px;
+  margin: 25px auto;
+  background: #ffd36e;
+  border-radius: 12px;
+  position: relative;
+  cursor: pointer;
+  box-shadow: 0 8px 20px #0002;
+  transition: transform .2s;
+}
+
+.photo-folder:hover {
+  transform: scale(1.05);
+}
+
+.photo-folder::before {
+  content: "";
+  position: absolute;
+  width: 75px;
+  height: 25px;
+  background: #ffbf45;
+  top: -15px;
+  left: 10px;
+  border-radius: 10px 10px 0 0;
+}
+
+.photo-folder span {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #654100;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.photo-album {
+  display: none;
   margin-top: 20px;
 }
 
-.gallery img {
+.photo-album.active {
+  display: block;
+}
+
+.photo-album img {
   width: 100%;
-  height: 180px;
-  object-fit: cover;
+  height: auto;
+  max-height: 500px;
+  object-fit: contain;
   border-radius: 18px;
   border: 4px solid white;
+  margin-bottom: 12px;
+}
+
+.photo-album .photo-box {
+  margin-bottom: 15px;
 }
 
 /* Fireworks */
@@ -209,10 +259,6 @@ button:hover {
 }
 
 @media(max-width: 500px) {
-  .gallery img {
-    height: 140px;
-  }
-
   .character {
     font-size: 80px;
   }
@@ -324,15 +370,29 @@ button:hover {
 
       <h2>Our Beautiful Memories 📸</h2>
 
-      <div class="gallery">
+      <div class="photo-folder" onclick="openAlbum()">
+        <span>📁 Photos</span>
+      </div>
 
-        <img src="photo1.jpeg" alt="Our memory">
+      <div id="photoAlbum" class="photo-album">
 
-        <img src="photo2.jpeg" alt="Our memory">
+        <div class="photo-box">
+          <img src="photo1.jpeg" alt="Our memory">
+        </div>
 
-        <img src="photo3.jpeg" alt="Our memory">
+        <div class="photo-box">
+          <img src="photo2.jpeg" alt="Our memory">
+        </div>
 
-        <img src="photo4.jpeg" alt="Our memory">
+        <div class="photo-box">
+          <img src="photo3.jpeg" alt="Our memory">
+        </div>
+
+        <div class="photo-box">
+          <img src="photo4.jpeg" alt="Our memory">
+        </div>
+
+        <button onclick="closeAlbum()">⬅ Back</button>
 
       </div>
 
@@ -414,6 +474,22 @@ function toggleMusic() {
     playBtn.textContent = "▶️";
 
   }
+
+}
+
+/* Photo Album */
+
+function openAlbum() {
+
+  document.getElementById("photoAlbum")
+    .classList.add("active");
+
+}
+
+function closeAlbum() {
+
+  document.getElementById("photoAlbum")
+    .classList.remove("active");
 
 }
 
