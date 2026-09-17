@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Sumaiya ❤️</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+  color: #6b2145;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+.container {
+  padding: 35px 18px;
+  max-width: 800px;
+  margin: auto;
+}
+
+h1 {
+  font-size: clamp(32px, 8vw, 60px);
+  margin: 20px 0 10px;
+  animation: glow 2s infinite alternate;
+}
+
+.subtitle {
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+button {
+  border: none;
+  border-radius: 30px;
+  padding: 14px 28px;
+  font-size: 17px;
+  cursor: pointer;
+  background: #fff;
+  color: #d6336c;
+  box-shadow: 0 5px 15px #0002;
+  transition: transform .2s;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+.gift {
+  font-size: 110px;
+  cursor: pointer;
+  display: inline-block;
+  animation: bounce 1.5s infinite;
+  margin: 20px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.message {
+  background: #ffffffb8;
+  padding: 25px;
+  border-radius: 25px;
+  margin-top: 25px;
+  animation: appear 1s ease;
+}
+
+.message h2 {
+  font-size: 30px;
+}
+
+.message p {
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.characters {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin: 25px 0;
+}
+
+.character {
+  font-size: 100px;
+  animation: jump 1s infinite alternate;
+}
+
+.character:nth-child(2) {
+  animation-delay: .3s;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.gallery img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 18px;
+  border: 4px solid white;
+}
+
+#fireworks {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+#surprise {
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes bounce {
+  50% {
+    transform: translateY(-15px) rotate(4deg);
+  }
+}
+
+@keyframes jump {
+  to {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: scale(.7);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 5px #fff;
+  }
+
+  to {
+    text-shadow: 0 0 25px #fff;
+  }
+}
+
+@media(max-width: 500px) {
+  .gallery img {
+    height: 140px;
+  }
+
+  .character {
+    font-size: 80px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="fireworks"></canvas>
+
+<div class="container">
+
+  <h1>Happy Birthday Sumaiya ❤️</h1>
+
+  <p class="subtitle">
+    Meri jaan, tumhara special day hai! 🎂
+  </p>
+
+  <button onclick="startSurprise()">
+    🎁 Open Your Surprise
+  </button>
+
+  <div id="surprise" class="hidden">
+
+    <div class="gift" onclick="openGift()">
+      🎁
+    </div>
+
+    <p>Gift par click karo, madam ji! 💝</p>
+
+    <div id="giftContent" class="hidden">
+
+      <div class="characters">
+        <div class="character">🐼</div>
+        <div class="character">🧸</div>
+      </div>
+
+      <div class="message">
+
+        <h2>For My Beautiful Sumaiya 💖</h2>
+
+        <p>
+          Happy Birthday meri jaan! 🥹❤️
+        </p>
+
+        <p>
+          Tum meri life ka woh beautiful part ho
+          jiske bina sab kuch incomplete lagta hai.
+          Tumhare saath bitaya har moment mere liye special hai.
+        </p>
+
+        <p>
+          I know humare beech kuch societal problems hain
+          aur tum unki wajah se bohot hi tensed ho.
+          Lekin baby, aise problems se bhagne se kuch nahi hoga na...
+        </p>
+
+        <p>
+          Humlog milkar unka saamna karenge
+          aur saath mein solution dhundenge.
+          Tumhe akele kuch face karne ki zarurat nahi hai,
+          main hoon na tumhare saath.
+        </p>
+
+        <p>
+          Bas tum mera haath pakad ke rakhna,
+          baaki jo bhi hoga, hum dono milkar dekh lenge. ❤️
+        </p>
+
+        <p>
+          Bas aise hi hamesha mere saath rehna,
+          muskurate rehna aur mujhe pareshan karte rehna. 😂
+        </p>
+
+        <p>
+          I love you so much, Sumaiya. ❤️
+        </p>
+
+        <h2>Once Again, Happy Birthday! 🎂</h2>
+
+      </div>
+
+      <h2>Our Beautiful Memories 📸</h2>
+
+      <div class="gallery">
+        <img src="photo1.jpg" alt="Our memory">
+        <img src="photo2.jpg" alt="Our memory">
+        <img src="photo3.jpg" alt="Our memory">
+        <img src="photo4.jpg" alt="Our memory">
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<audio id="music" loop>
+  <source src="birthday-song.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const canvas = document.getElementById("fireworks");
+const ctx = canvas.getContext("2d");
+
+let particles = [];
+
+canvas.width = innerWidth;
+canvas.height = innerHeight;
+
+window.addEventListener("resize", () => {
+  canvas.width = innerWidth;
+  canvas.height = innerHeight;
+});
+
+function startSurprise() {
+  document.getElementById("surprise").classList.remove("hidden");
+
+  const music = document.getElementById("music");
+
+  music.play().catch(() => {});
+
+  fireworks();
+}
+
+function openGift() {
+  document.querySelector(".gift").textContent = "🎉";
+
+  document.getElementById("giftContent")
+    .classList.remove("hidden");
+
+  fireworks();
+}
+
+function fireworks() {
+  for (let i = 0; i < 100; i++) {
+    particles.push({
+      x: innerWidth / 2,
+      y: innerHeight / 2,
+      angle: Math.random() * Math.PI * 2,
+      speed: Math.random() * 7 + 2,
+      life: 100
+    });
+  }
+}
+
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  particles.forEach((p, index) => {
+    p.x += Math.cos(p.angle) * p.speed;
+    p.y += Math.sin(p.angle) * p.speed;
+    p.life--;
+
+    ctx.fillStyle =
+      `hsl(${Math.random() * 360}, 100%, 60%)`;
+
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, 3, 0, Math.PI * 2);
+    ctx.fill();
+
+    if (p.life <= 0) {
+      particles.splice(index, 1);
+    }
+  });
+
+  requestAnimationFrame(animate);
+}
+
+animate();
+</script>
+
+</body>
+</html>
